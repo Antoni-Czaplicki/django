@@ -61,6 +61,7 @@ def send_mail(
     auth_password=None,
     connection=None,
     html_message=None,
+    reply_to=None,
 ):
     """
     Easy wrapper for sending a single message to a recipient list. All members
@@ -79,7 +80,7 @@ def send_mail(
         fail_silently=fail_silently,
     )
     mail = EmailMultiAlternatives(
-        subject, message, from_email, recipient_list, connection=connection
+        subject, message, from_email, recipient_list, connection=connection, reply_to=reply_to
     )
     if html_message:
         mail.attach_alternative(html_message, "text/html")
